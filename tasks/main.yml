@@ -12,6 +12,9 @@
 #     pkg: 
 #     - postgresql-{{ postgresql_version }}={{ postgresql_package_version }}
 #     - postgresql-server-dev-{{ postgresql_version }}={{ postgresql_package_version }}
+- debug: 
+    msg: "In miao-bpl, ansible-postgresql, installing postgresql and config pg_hba.conf"
+
 - name: Install PostgreSQL
   apt: pkg={{ item }} state=present
   with_items:
