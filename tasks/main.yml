@@ -25,12 +25,14 @@
   template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
   notify:
     - Reload PostgreSQL
+    - Start PostgreSQL
     - Restart PostgreSQL
 
 - name: Configure PostgreSQL
   template: src=postgresql.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
   notify:
     - Reload PostgreSQL
+    - Start PostgreSQL
     - Restart PostgreSQL
 
 - name: reload configuration
