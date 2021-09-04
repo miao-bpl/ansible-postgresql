@@ -2,7 +2,12 @@
 - name: Reload PostgreSQL
   service: name=postgresql state=reloaded
   ignore_errors: True
-  
+
+- name: Start PostgreSQL
+  service: name=postgresql state=started
+  ignore_errors: True
+ 
+ 
 - name: Restart PostgreSQL
   service: name=postgresql state=restarted
   ignore_errors: True
