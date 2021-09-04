@@ -23,10 +23,12 @@
 
 - name: Configure PostgreSQL host-based authentication
   template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
-  # notify:
-  #   - Restart PostgreSQL
+  notify:
+    - Restart PostgreSQL
 
 - name: Configure PostgreSQL
   template: src=postgresql.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
-  # notify:
-  #   - Restart PostgreSQL
+  notify:
+    - Restart PostgreSQL
+
+- meta: flush_handlers
