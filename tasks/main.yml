@@ -36,3 +36,4 @@
   command: initctl reload-configuration
 
 - meta: flush_handlers
+  ignore_errors: True
