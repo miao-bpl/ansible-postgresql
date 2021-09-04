@@ -31,4 +31,8 @@
   notify:
     - Restart PostgreSQL
 
+- name: reload configuration
+  become: yes
+  command: initctl reload-configuration
+
 - meta: flush_handlers
