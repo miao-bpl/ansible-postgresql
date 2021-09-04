@@ -16,11 +16,16 @@
     msg: "In miao-bpl, ansible-postgresql, installing postgresql and config pg_hba.conf"
 
 - name: Install PostgreSQL
-  apt: pkg={{ item }} state=present
-  with_items:
-    - postgresql
-    - postgresql-contrib
-
+#  apt: pkg={{ item }} state=present
+#  with_items:
+#    - postgresql
+#    - postgresql-contrib
+  apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+    state: present
+    
 - name: Configure PostgreSQL host-based authentication
   template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
   notify:
