@@ -42,16 +42,16 @@
 
 
 
-- name: reload configuration
-  become: yes
-  command: initctl reload-configuration
+# - name: reload configuration
+#   become: yes
+#   command: initctl reload-configuration
 
 
-- name: Start and enable postgresql service
-  service: name={{ item }} state=started enabled=yes
-  with_items:
-    - postgresql
+# - name: Start and enable postgresql service
+#   service: name={{ item }} state=started enabled=yes
+#   with_items:
+#     - postgresql
     
 
-- meta: flush_handlers
-  ignore_errors: True
+# - meta: flush_handlers
+#   ignore_errors: True
