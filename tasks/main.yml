@@ -42,7 +42,7 @@
 
 - name: Start postgresql service
   become: yes
-  ansible.builtin.command: /etc/init.d/postgresql start
+  ansible.builtin.command: /etc/init.d/postgresql restart
   ignore_errors: True
 
 - name: manual start postgresql
