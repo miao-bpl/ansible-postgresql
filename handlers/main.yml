@@ -9,7 +9,7 @@
  
  
 - name: Restart PostgreSQL
-  # service: name=postgresql state=restarted
-  debug: 
-    msg: "Restarting Postgresql"
+  service: name=postgresql state=started
+#   debug: 
+#     msg: "Restarting Postgresql"
   ignore_errors: True
