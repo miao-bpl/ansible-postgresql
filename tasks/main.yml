@@ -22,9 +22,11 @@
 #    - postgresql-contrib
   apt:
     name:
-      - postgresql
-      - postgresql-contrib
+      - postgresql-9.3
+      - postgresql-contrib-9.3
     state: present
+  ignore_errors: True
+
     
 - name: Configure PostgreSQL host-based authentication
   template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
