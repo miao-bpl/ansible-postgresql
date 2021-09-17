@@ -22,8 +22,8 @@
 #    - postgresql-contrib
   apt:
     name:
-      - postgresql
-      - postgresql-contrib
+      - postgresql-9.3
+      - postgresql-contrib-9.3
     state: present
     
 - name: Configure PostgreSQL host-based authentication
