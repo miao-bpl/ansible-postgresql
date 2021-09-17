@@ -85,10 +85,13 @@
 # Database administrative login by Unix domain socket
 local   all             postgres                                peer
 
-{% if postgresql_version is version('9.3', '<=') %}
+## version() function is not supported in ansible 2.1, so comment it out
+## But administration login is still needed.
+# {% if postgresql_version is version('9.3', '<=') %}
 # Database administrative login from localhost
 host    all             postgres        127.0.0.1/32            trust
-{% endif %}
+# {% endif %}
+## version() function is not supported in ansible 2.1, so comment it out
 
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
 
