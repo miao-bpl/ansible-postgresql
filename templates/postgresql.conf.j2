@@ -129,6 +129,9 @@ work_mem = {{ postgresql_work_mem }}				# min 64kB
 #replacement_sort_tuples = 150000	# limits use of replacement selection sort
 #autovacuum_work_mem = -1		# min 1MB, or -1 to use maintenance_work_mem
 #max_stack_depth = 2MB			# min 100kB
+
+## version() function is not supported in ansible 2.1, so comment it out
+## But dynamic_shared_memory_type is still needed.
 {% if postgresql_version is version('9.3', '>') %}
 dynamic_shared_memory_type = posix	# the default is the first option
 					# supported by the operating system:
@@ -138,6 +141,8 @@ dynamic_shared_memory_type = posix	# the default is the first option
 					#   mmap
 					# use none to disable dynamic shared memory
 {% endif %}
+## version() function is not supported in ansible 2.1, so comment it out
+
 
 # - Disk -
 
