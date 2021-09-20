@@ -22,8 +22,8 @@
 #    - postgresql-contrib
   apt:
     name:
-      - postgresql-9.3
-      - postgresql-contrib-9.3
+      - postgresql
+      - postgresql-contrib
     state: present
   ignore_errors: True
 
@@ -45,6 +45,12 @@
     # - Start PostgreSQL
     - Restart PostgreSQL
   ignore_errors: True
+
+## Because ansible 2.0.1 cannot resolve some variables, ubuntu14 cannot restart
+## postgresql service. Manually start it.  
+- name: Start postgresql service
+  become: yes
+  command: service postgresql restart
 
 # - name: Start postgresql service
 #   become: yes
