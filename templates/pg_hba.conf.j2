@@ -72,9 +72,14 @@
 # listen on a non-local interface via the listen_addresses
 # configuration parameter, or via the -i or -h command line switches.
 
-{% for rule in postgresql_hba_mapping %}
-{{ rule.type }} {{ rule.database }} {{ rule.user }} {{ rule.address }} {{ rule.method }}
-{% endfor %}
+### Daniel Miao 09/20/2021
+# {% for rule in postgresql_hba_mapping %}
+# {{ rule.type }} {{ rule.database }} {{ rule.user }} {{ rule.address }} {{ rule.method }}
+# {% endfor %}
+
+host all all 33.33.35.1/24 md5
+host all all 10.0.2.0/24 md5
+### Daniel Miao 09/20/2021
 
 # DO NOT DISABLE!
 # If you change this first entry you will need to make sure that the
@@ -88,10 +93,10 @@ local   all             postgres                                peer
 ## Daniel Miao
 # version() function is not supported in ansible 2.1, so comment it out
 # But administration login is still needed.
-{% if postgresql_version is version('9.3', '<=') %}
+# {% if postgresql_version is version('9.3', '<=') %}
 # Database administrative login from localhost
 host    all             postgres        127.0.0.1/32            trust
-{% endif %}
+# {% endif %}
 ## version() function is not supported in ansible 2.1, so comment it out
 ## Daniel Miao
 
