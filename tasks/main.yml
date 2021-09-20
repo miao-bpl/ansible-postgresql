@@ -29,18 +29,20 @@
 
     
 - name: Configure PostgreSQL host-based authentication
-  template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
+#  template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
+  template: src=pg_hba.conf.j2 dest=/etc/postgresql/9.3/main/pg_hba.conf
   notify:
-    - Reload PostgreSQL
-    - Start PostgreSQL
+    # - Reload PostgreSQL
+    # - Start PostgreSQL
     - Restart PostgreSQL
   ignore_errors: True
 
 - name: Configure PostgreSQL
-  template: src=postgresql.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+#   template: src=postgresql.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+  template: src=postgresql.conf.j2 dest=/etc/postgresql/9.3/main/postgresql.conf
   notify:
-    - Reload PostgreSQL
-    - Start PostgreSQL
+    # - Reload PostgreSQL
+    # - Start PostgreSQL
     - Restart PostgreSQL
   ignore_errors: True
 
