@@ -16,10 +16,6 @@
     msg: "In miao-bpl, ansible-postgresql, installing postgresql and config pg_hba.conf"
 
 - name: Install PostgreSQL
-#  apt: pkg={{ item }} state=present
-#  with_items:
-#    - postgresql
-#    - postgresql-contrib
   apt:
     name:
       - postgresql
@@ -29,8 +25,8 @@
 
     
 - name: Configure PostgreSQL host-based authentication
-#  template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
-  template: src=pg_hba.conf.j2 dest=/etc/postgresql/9.3/main/pg_hba.conf
+ template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
+#  template: src=pg_hba.conf.j2 dest=/etc/postgresql/9.3/main/pg_hba.conf
   notify:
     # - Reload PostgreSQL
     # - Start PostgreSQL
@@ -41,8 +37,6 @@
 #   template: src=postgresql.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
   template: src=postgresql.conf.j2 dest=/etc/postgresql/9.3/main/postgresql.conf
   notify:
-    # - Reload PostgreSQL
-    # - Start PostgreSQL
     - Restart PostgreSQL
   ignore_errors: True
 
@@ -52,26 +46,3 @@
   become: yes
   command: service postgresql restart
 
-# - name: Start postgresql service
-#   become: yes
-#   ansible.builtin.command: /etc/init.d/postgresql restart
-#   ignore_errors: True
-
-# - name: manual start postgresql
-#   become: yes
-#   ansible.builtin.command:  initctl emit postgresql-started
-#   ignore_errors: True
-
-# - name: reload configuration
-#   become: yes
-#   command: initctl reload-configuration
-
-
-# - name: Start and enable postgresql service
-#   service: name={{ item }} state=started enabled=yes
-#   with_items:
-#     - postgresql
-    
-
-# - meta: flush_handlers
-#   ignore_errors: True
