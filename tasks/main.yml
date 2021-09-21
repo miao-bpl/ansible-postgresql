@@ -34,8 +34,8 @@
   ignore_errors: True
 
 - name: Configure PostgreSQL
-#   template: src=postgresql.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
-  template: src=postgresql.conf.j2 dest=/etc/postgresql/9.3/main/postgresql.conf
+  template: src=postgresql.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+#  template: src=postgresql.conf.j2 dest=/etc/postgresql/9.3/main/postgresql.conf
   notify:
     - Restart PostgreSQL
   ignore_errors: True
